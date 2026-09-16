@@ -10,4 +10,4 @@
 
 # Hyperlinks
 
-1. [OpenScad Model holder for double akkum battery 18650 ] -----> (https://www.thingiverse.com/thing:456900)
+1. [OpenScad Model holder for double akkum battery 18650 ]  (https://www.thingiverse.com/thing:456900) on site thingverse
