@@ -8,6 +8,11 @@
 
 <img width="1684" height="1944" alt="podstavka" src="https://github.com/user-attachments/assets/0d5bf142-e0f5-4357-9172-6e311fd14093" />
 
+# Объект к Практике 5
+
+<img width="1827" height="1366" alt="prac5" src="https://github.com/user-attachments/assets/2a8184d0-933e-45e7-b948-8641ddaa4c4a" />
+
+
 # Hyperlinks
 
 1. [OpenScad Model holder for double akkum battery 18650 ]  (https://www.thingiverse.com/thing:456900) on site thingverse
