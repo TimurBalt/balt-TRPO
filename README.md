@@ -14,6 +14,7 @@
 
 # Объект к Практике 6
 
+![Uploading image.png…]()
 
 # Hyperlinks
 
