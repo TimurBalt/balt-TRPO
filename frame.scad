@@ -1,9 +1,12 @@
 use <akkum_18650.scad>
 
 echo("Rabota Baltatchev");
+
 thickness_frame = 4;
 thickness_walls = 2;
 thickness_bottom = 2;
+thickness_top = 2;
+width_frame_window = 3;
 
 w_back = 70;
 h_back = 45;
@@ -17,6 +20,17 @@ h_akkum = 65;
 gap_backlight = 1.5;
 
 frame_debug();
+//translate([0, 0, thickness_bottom/2+thickness_top/2])
+//window_frame();
+
+module window_frame(){
+    difference(){
+        color("green")
+        cube([w_back, h_back, thickness_top], center = true);
+        color("red")
+        cube([w_back-width_frame_window*2, h_back-width_frame_window*2, thickness_top+1], center = true);
+    }
+}
 
 module frame_debug(){
     difference(){
@@ -31,6 +45,8 @@ module kit_frame(){
     translate([0,0,h_walls/2+thickness_bottom/2])
     walls();
     wires();
+    translate([0, 0, thickness_bottom/2+thickness_top/2])
+    window_frame();
 }
 
 module wires() {
@@ -60,4 +76,3 @@ module backlight(){
 module bottom(){
     cube([w_back+2*thickness_walls+gap_backlight, h_back+2*thickness_walls+gap_backlight, thickness_bottom], center = true);
 }
-
