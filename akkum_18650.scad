@@ -1,4 +1,4 @@
-echo("Rabota Baltatchev");
+echo("Rabota Балтачев");
 
 d_akkum = 18;
 h_akkum = 65;
