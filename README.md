@@ -12,6 +12,7 @@
 
 <img width="1827" height="1366" alt="prac5" src="https://github.com/user-attachments/assets/0ddd0d95-a483-4d4d-92a1-4345d61554a6" />
 
+# Объект к Практике 6
 
 
 # Hyperlinks
