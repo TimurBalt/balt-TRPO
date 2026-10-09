@@ -1,96 +1,86 @@
+use <akkum_18650.scad>
+use <controler.scad>
 
-len_bottom = 106;
-depth_bottom = 58;
-thickness_walls = 1.6;
-// screen backlight panel
-// height of frame without thickness bottom
-height_frame = 4;
-thickness_bottom = 1.4;
-depth_pcb = 7; 
+echo("Rabota Baltatchev");
 
-// window_frame();
+thickness_frame = 4;
+thickness_walls = 2;
+thickness_bottom = 2;
+thickness_top = 2;
+width_frame_window = 3;
 
-translate([0, 0, -5])
+w_controller = 20;
+
+w_back = 70;
+h_back = 45;
+
+thickness_back = 1;
+h_walls = 4;
+d_wires = 1.2;
+
+d_akkum = 18;
+h_akkum = 65;
+
+gap_backlight = 1.5;
+
 kit_frame();
-set_frame();
-// frame_is_match();
+translate([w_back/2+w_controller/2+2*thickness_walls, 0, 0])
+kit_controller();
+//frame_debug();
+//translate([0, 0, thickness_bottom/2+thickness_top/2])
+//window_frame();
+walls();
 
-module window_frame() {
-  difference() {
-    color("green")
-    cube([len_bottom, depth_bottom, height_frame], true);
-    cube([len_bottom-10, depth_bottom-4, height_frame+1], true);
-    translate([len_bottom/2-1, 0, 0])
-    cube([4, depth_bottom-4, height_frame+1], true);
-    translate([-len_bottom/2+4, 0, 0])
-    cube([4, depth_bottom-4, height_frame+1], true);
-  }
-}
-
-module kit_frame() {
-  difference() {
-    set_frame();
-    for(i=[1:6]){
-      translate([len_bottom/2, -depth_bottom/2+3*i, 0.5])
-      rotate([0, 90, 0])
-      cylinder(d=1.8, h=5, center=true, $fn=32);
+module window_frame(){
+    difference(){
+        color("green")
+        cube([w_back, h_back, thickness_top], center = true);
+        color("red")
+        cube([w_back-width_frame_window*2, h_back-width_frame_window*2, thickness_top+1], center = true);
     }
+}
+
+module frame_debug(){
+    difference(){
+    kit_frame();
+    translate([w_back/2, 0, h_walls-thickness_bottom])
+    cube([w_back, h_back+2*thickness_walls+2, h_walls*2], center = true);
+    }
+}
+
+module kit_frame(){
+    bottom();
+    translate([0,0,h_walls/2+thickness_bottom/2])
+    walls();
+    wires();
+    translate([0, 0, thickness_bottom/2+thickness_top/2])
+    window_frame();
+}
+
+module wires() {
+    translate([w_back/2, -h_back/2+6, h_walls/2+0.5])
+    rotate([0, 90, 0])
+    color("red")
+    cylinder(d=d_wires, h=25, center=true, $fn=25);
     
-  }  
+    translate([w_back/2, -h_back/2+2, h_walls/2+0.5])
+    rotate([0, 90, 0])
+    color("black")
+    cylinder(d=d_wires, h=25, center=true, $fn=25);
 }
 
-module set_frame() {
-  color("lime")
-  translate([0, 0, -height_frame/2])
-  bottom();
-  frame();
-  translate([len_bottom/2+depth_pcb/2+thickness_walls, 0, 0])
-  set_frame_pcb();
+module walls(){
+    difference(){
+        cube([w_back+2*thickness_walls+gap_backlight, h_back+2*thickness_walls+gap_backlight, h_walls], center = true);
+        color("red")
+        cube([w_back+gap_backlight, h_back+gap_backlight, h_walls+1], center = true);
+    }
+}
+module backlight(){
+    color("lightgreen")
+    cube([w_back, h_back, thickness_back], center = true);
 }
 
-module set_frame_pcb() {
-  color("lime")
-  translate([0, 0, -height_frame/2])
-  bottom_pcb();
-  frame_pcb();
-}
-
-module bottom_pcb() {
-  cube([depth_pcb+2*thickness_walls, depth_bottom+2*thickness_walls, thickness_bottom], true);
-}
-
-module frame_pcb() {
-  difference() {
-    cube([depth_pcb+2*thickness_walls, depth_bottom+2*thickness_walls, thickness_bottom+height_frame], true);
-    color("red")
-    cube([depth_pcb, depth_bottom, thickness_bottom+height_frame+0.1], true);
-  }
-}
-
-module bottom() {
-  cube([len_bottom+2*thickness_walls, depth_bottom+2*thickness_walls, thickness_bottom], true);
-}
-
-module frame() {
-  difference() {
-    cube([len_bottom+2*thickness_walls, depth_bottom+2*thickness_walls, thickness_bottom+height_frame], true);
-    color("red")
-    cube([len_bottom, depth_bottom, thickness_bottom+height_frame+0.1], true);
-  }
-}
-
-module frame_is_match() {
-  difference() {
-    set_frame();
-    // cut is match
-    translate([106/4, 0, 0])
-    cube([106/2+4, 58+4, 4*2], true);
-  }
-  // is match wall
-  translate([0, depth_bottom/2+thickness_walls/2, 0])
-  cube([5, thickness_walls, thickness_bottom+height_frame], true);
-  
-  // is match bottom
-  translate([0, depth_bottom/2-4, -height_frame/2])
-  cube([5, 5, thickness_bottom], true);
+module bottom(){
+    cube([w_back+2*thickness_walls+gap_backlight, h_back+2*thickness_walls+gap_backlight, thickness_bottom], center = true);
 }
