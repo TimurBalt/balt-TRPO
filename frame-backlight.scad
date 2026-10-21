@@ -1,7 +1,7 @@
 use <akkum_18650.scad>
-use <controler.scad>
+use <controller.scad>
 
-echo("Rabota Baltatchev");
+echo("Работа");
 
 thickness_frame = 4;
 thickness_walls = 2;
