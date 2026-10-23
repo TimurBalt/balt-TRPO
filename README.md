@@ -16,6 +16,10 @@
 
 ![Uploading image.png…]()
 
+# Объект к Практике 12
+
+https://github.com/TimurBalt/balt-TRPO/blob/main/buldframe.PNG
+
 # Hyperlinks
 
 1. [OpenScad Model holder for double akkum battery 18650 ]  (https://www.thingiverse.com/thing:456900) on site thingverse
